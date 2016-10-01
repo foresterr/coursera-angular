@@ -29,7 +29,9 @@
         placeholder="list comma separated dishes you usually have for lunch"
         class="form-control" ng-model="lunchList"
         ng-class="{true:'red-border', false:'green-border'}[noData]">
-        <small class="text-muted">Please note, my version of the app ignores empty items in the list.</small>
+        <small class="text-muted">
+          Please note, my version of the app ignores empty items in the list.
+        </small>
     </div>
     <div class="form-group">
       <button class="btn btn-default" ng-click="lunchCheck()">Check If Too Much</button>
