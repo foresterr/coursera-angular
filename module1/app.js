@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module('LunchChecker', [])
-  .controller('LunchCheckerController', LCController);
+    .controller('LunchCheckerController', LCController);
 
   LCController.$inject = ['$scope'];
   function LCController($scope) {
@@ -29,7 +29,7 @@
     };
 
     function countListItems(str) {
-      return str.split(',').filter(function(elem) {
+      return str.split(',').filter(function (elem) {
         return elem.trim();
       }).length;
     }
