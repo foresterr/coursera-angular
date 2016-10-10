@@ -21,6 +21,13 @@
               search = searchTerm.toLowerCase();
           return searchTerm !== '' && toSearch.indexOf(search) != -1;
         });
+      })
+      .then(function (result) {
+        result.forEach(function (item) {
+          var regexp = new RegExp('('+searchTerm+')','ig');
+          item.description = item.description.replace(regexp, '<span class="search-hl">$1</span>');
+        });
+        return result;
       });
     };
   }
@@ -58,10 +65,16 @@
         foundItems: '<',
         onRemove: '&'
       },
-      controller: (function () {}),
+      controller: FoundItemsDirectiveController,
       controllerAs: 'foundList',
       bindToController: true
     };
+  }
+
+  FoundItemsDirectiveController.$inject = ['$sce'];
+  function FoundItemsDirectiveController ($sce) {
+    var foundList = this;
+    foundList.trust = $sce.trustAsHtml;
   }
 
 })();

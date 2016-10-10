@@ -4,7 +4,7 @@
     <li ng-repeat="item in foundList.foundItems" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <div class="menu-tile well">
         <h3 class="text-center">({{item.short_name}}) {{item.name}}</h3>
-        <p>{{item.description}}</p>
+        <p ng-bind-html="foundList.trust(item.description)"></p>
         <button ng-click="foundList.onRemove({index: $index})" class="btn btn-danger btn-sm btn-remove">Don't want this one!</button>
       </div>
     </li>

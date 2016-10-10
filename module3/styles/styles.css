@@ -25,6 +25,9 @@ input[type="text"] {
   float: left;
   margin-left: 10px;
 }
+.search-hl {
+  background-color: greenyellow;
+}
 .btn-remove {
   position: absolute;
   width: 12em;
