@@ -1,5 +1,5 @@
 (function () {
-  angular.module('NarrowItDownApp', [])
+  angular.module('NarrowItDownApp', ['ngSanitize'])
   .controller('NarrowItDownController', NarrowItDownController)
   .service('MenuSearchService', MenuSearchService)
   .directive('foundItems', FoundItemsDirective)
@@ -65,16 +65,10 @@
         foundItems: '<',
         onRemove: '&'
       },
-      controller: FoundItemsDirectiveController,
+      controller: (function () {}),
       controllerAs: 'foundList',
       bindToController: true
     };
-  }
-
-  FoundItemsDirectiveController.$inject = ['$sce'];
-  function FoundItemsDirectiveController ($sce) {
-    var foundList = this;
-    foundList.trust = $sce.trustAsHtml;
   }
 
 })();
