@@ -1,10 +1,13 @@
 <!--todo: style it nicer-->
-<div style="clear: both">
+<div class="row">
   <ul>
-    <li ng-repeat="item in foundList.foundItems">
-      {{item.short_name}}, {{item.name}}, {{item.description}}
-      <button ng-click="foundList.onRemove({index: $index})">Don't want this one!</button>
+    <li ng-repeat="item in foundList.foundItems" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="menu-tile well">
+        <h3 class="text-center">({{item.short_name}}) {{item.name}}</h3>
+        <p>{{item.description}}</p>
+        <button ng-click="foundList.onRemove({index: $index})" class="btn btn-danger btn-sm btn-remove">Don't want this one!</button>
+      </div>
     </li>
   </ul>
-  <div ng-if="foundList.foundItems.length === 0">Nothing found!</div>
+  <div ng-if="foundList.foundItems.length === 0"><h3 class="text-center">Nothing found!</h3></div>
 </div>
