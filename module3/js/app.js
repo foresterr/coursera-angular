@@ -53,7 +53,7 @@
   function FoundItemsDirective() {
     return {
       restrict: 'E',
-      templateUrl: '../templates/foundItems.html',
+      templateUrl: 'templates/foundItems.html',
       scope: {
         foundItems: '<',
         onRemove: '&'
