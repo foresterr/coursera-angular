@@ -1,3 +1,7 @@
+.row ul {
+  padding: 0;
+}
+
 .row li {
   list-style: none;
   padding: 1em;
