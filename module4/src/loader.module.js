@@ -17,17 +17,17 @@
     $ctrl.showLoader = false;
 
     $ctrl.$onInit = function () {
-      var handler = $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+      var handler = $rootScope.$on('$stateChangeStart', function () {
         $ctrl.showLoader = true;
       });
       handlersToCancel.push(handler);
 
-      handler = $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+      handler = $rootScope.$on('$stateChangeSuccess', function () {
         $ctrl.showLoader = false;
       });
       handlersToCancel.push(handler);
 
-      handler = $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      handler = $rootScope.$on('$stateChangeError', function () {
         $ctrl.showLoader = false;
       });
       handlersToCancel.push(handler);
