@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('MenuApp')
-  .controller('ItemsViewController', ItemsViewController);
+    .controller('ItemsViewController', ItemsViewController);
 
   ItemsViewController.$inject = ['itemsAjaxResult'];
   function ItemsViewController(itemsAjaxResult) {

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module('MenuApp')
-  .controller('CategoriesViewController', CategoriesViewController);
+    .controller('CategoriesViewController', CategoriesViewController);
 
   CategoriesViewController.$inject = ['categoryAjaxResult']
   function CategoriesViewController(categoryAjaxResult) {
