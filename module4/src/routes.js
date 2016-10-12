@@ -16,7 +16,7 @@
       .state('categories', {
         url: '/categories',
         templateUrl: './src/views/categories.html',
-        controller: 'CategoriesViewController as ctrl',
+        controller: 'CategoriesViewController as $ctrl',
         resolve: {
           categoryAjaxResult: ['MenuDataService', function (MenuDataService) {
             return MenuDataService.getAllCategories();
@@ -25,7 +25,7 @@
       })
       .state('categories.items', {
         templateUrl: './src/views/items.html',
-        controller: 'ItemsViewController as ctrl',
+        controller: 'ItemsViewController as $ctrl',
         params: {
           categoryShortName: null
         },

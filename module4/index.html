@@ -6,11 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./styles/bootstrap.min.css">
 	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="stylesheet" href="./styles/loader.css">
 </head>
 
 <body ng-app="MenuApp">
-	<div class="container">
-		<h1>Menu browsing app</h1>
+	<div class="container main">
+		<h1 class="text-center"><loader-spinner></loader-spinner> Menu browsing app <loader-spinner></loader-spinner></h1>
 		<ui-view></ui-view>
 	</div>
 	<!--Libraries-->
@@ -19,6 +20,7 @@
 	<!--Modules-->
 	<script src="./src/menuapp.module.js"></script>
 	<script src="./src/data.module.js"></script>
+	<script src="./src/loader.module.js"></script>
 	<!--Artifacts-->
 	<script src="./src/menudata.service.js"></script>
 	<script src="./src/categoriesview.controller.js"></script>
