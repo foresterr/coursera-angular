@@ -9,9 +9,5 @@
     service.storeUser = function(user) {
       service.user = user;
     }
-
-    service.retrieveUser = function() {
-      return service.user;
-    }
   }
 })();

@@ -1,15 +1,19 @@
 (function () {
   'use strict';
   angular.module('public')
-  .controller('SignupController', SignupController);
+    .controller('SignupController', SignupController);
 
-  SignupController.$inject = ['UserInfoService'];
-  function SignupController (UserInfoService) {
+  SignupController.$inject = ['UserInfoService', 'MenuService'];
+  function SignupController(UserInfoService, MenuService) {
     var $ctrl = this;
 
     $ctrl.submit = function () {
-      UserInfoService.storeUser($ctrl.user);
-      $ctrl.complete = true;
+      MenuService.getMenuItem($ctrl.user.favDishId)
+        .then(function (responseData) {
+          $ctrl.user.favDish = responseData;
+          UserInfoService.storeUser($ctrl.user);
+          $ctrl.complete = true;
+        });
     }
   }
 })();

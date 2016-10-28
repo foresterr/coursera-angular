@@ -1,11 +1,11 @@
 <div class="container" ng-controller="SignupController as $ctrl">
   <h2 class="text-center">Please register with us to receive latest news and promos!</h2>
-  <form name="signup" class="row" ng-submit="$ctrl.submit()" novalidate>
+  <form name="signup" class="row" ng-submit="$ctrl.submit()" autocomplete="false" novalidate>
     <inputgroup class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6">
         <div class="form-group"
           ng-class="{
-            'has-error': signup.firstname.$error.required && signup.firstname.$touched,
-            'has-success': !signup.firstname.$error.required && signup.firstname.$touched
+            'has-error': signup.firstname.$invalid && signup.firstname.$touched,
+            'has-success': signup.firstname.$valid
           }">
           <label class="control-label" for="firstname">First name:</label>
             <input name="firstname" type="text" class="form-control" id="firstname"
@@ -13,14 +13,14 @@
               ng-model="$ctrl.user.firstname"
               required>
           <span class="help-block"
-            ng-if="signup.firstname.$error.required && signup.firstname.$touched">
+            ng-if="signup.firstname.$invalid && signup.firstname.$touched">
             First name is required!
           </span>
         </div>
         <div class="form-group"
           ng-class="{
-            'has-error': signup.lastname.$error.required && signup.lastname.$touched,
-            'has-success': !signup.lastname.$error.required && signup.lastname.$touched
+            'has-error': signup.lastname.$invalid && signup.lastname.$touched,
+            'has-success': signup.lastname.$valid
           }">
           <label class="control-label" for="lastname">Last name:</label>
             <input name="lastname" type="text" class="form-control" id="lastname"
@@ -28,14 +28,14 @@
               ng-model="$ctrl.user.lastname"
               required>
           <span class="help-block"
-            ng-if="signup.lastname.$error.required && signup.lastname.$touched">
+            ng-if="signup.lastname.$invalid && signup.lastname.$touched">
             Last name is required!
           </span>
         </div>
         <div class="form-group"
           ng-class="{
-            'has-error': (signup.email.$error.required || signup.email.$invalid) && signup.email.$touched,
-            'has-success': !(signup.email.$error.required || signup.email.$invalid) && signup.email.$touched
+            'has-error': signup.email.$invalid && signup.email.$touched,
+            'has-success': signup.email.$valid
           }">
           <label class="control-label" for="email">E-mail:</label>
             <input name="email" type="email" class="form-control" id="email"
@@ -43,14 +43,14 @@
               ng-model="$ctrl.user.email"
               required>
           <span class="help-block"
-            ng-if="(signup.email.$error.required || signup.email.$invalid) && signup.email.$touched">
+            ng-if="signup.email.$invalid && signup.email.$touched">
             A correct email is required!
           </span>
         </div>
         <div class="form-group"
           ng-class="{
-            'has-error': (signup.phone.$error.required || signup.phone.$invalid) && signup.phone.$touched,
-            'has-success': !(signup.phone.$error.required || signup.phone.$invalid) && signup.phone.$touched
+            'has-error': signup.phone.$invalid && signup.phone.$touched,
+            'has-success': signup.phone.$valid
           }">
           <label class="control-label" for="phone">Phone number:</label>
             <input name="phone" type="tel" class="form-control" id="phone"
@@ -59,30 +59,39 @@
               pattern="(\d{3})-(\d{3})-(\d{3}\d?)"
               required>
           <span class="help-block"
-            ng-if="(signup.phone.$error.required || signup.phone.$invalid) && signup.phone.$touched">
+            ng-if="signup.phone.$invalid && signup.phone.$touched">
             A correct phone number is required!
           </span>
         </div>
         <div class="form-group"
           ng-class="{
-            'has-error': signup.favDish.$error.required && signup.favDish.$touched,
-            'has-success': !signup.favDish.$error.required && signup.favDish.$touched
+            'has-error': signup.favDish.$invalid && signup.favDish.$touched || signup.favDish.$error.menuitem,
+            'has-warning': signup.favDish.$pending,
+            'has-success': signup.favDish.$valid
           }">
           <label class="control-label" for="favDish">Favorite dish:</label>
             <input name="favDish" type="text" class="form-control" id="favDish"
               placeholder="Please use dish number (like: A1, B2 etc.)"
-              ng-model="$ctrl.user.favDish"
+              ng-model="$ctrl.user.favDishId" menu-item-validate
               required>
           <span class="help-block"
             ng-if="signup.favDish.$error.required && signup.favDish.$touched">
-            You need to choose a favorite dish!
+            Please input menu number for favorite dish.
+          </span>
+          <span class="help-block"
+            ng-if="signup.favDish.$pending.menuitem">
+            Checking menu for your favorite dish...
+          </span>
+          <span class="help-block"
+            ng-if="signup.favDish.$error.menuitem">
+            No such menu number exists.
           </span>
         </div>
         <div class="text-center">
-          <input class="btn btn-large btn-warning" type="submit"
+          <input class="btn btn-lg btn-warning" type="submit"
             ng-disabled="signup.$invalid">
         </div>
+        <div class="text-center" ng-if="$ctrl.complete">Your information has been saved.</div>
     </inputgroup>
   </form>
-  <div class="text-center" ng-if="$ctrl.complete">Your information has been saved.</div>
 </div>

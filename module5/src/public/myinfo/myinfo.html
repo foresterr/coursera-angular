@@ -1,1 +1,48 @@
-<!--use a component here-->
+<div ng-controller="MyInfoController as $ctrl">
+	<h2 class="text-center" ng-if="!$ctrl.user">
+		Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+	</h2>
+
+  <div ng-if="$ctrl.user">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6">
+          <h2 class="text-center">You are registered with the following information:</h2>
+          <table class="table">
+            <thead>
+              <th>Field</th>
+              <th>Value</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">First name</th>
+                <td>{{$ctrl.user.firstname}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Last name</th>
+                <td>{{$ctrl.user.firstname}}</td>
+              </tr>
+              <tr>
+                <th scope="row">E-mail</th>
+                <td>{{$ctrl.user.email}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone #</th>
+                <td>{{$ctrl.user.phone}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <h3 class="text-center">Your favorite dish is:</h3>
+        <div class="col-md-3"></div>
+        <menu-item
+          menu-item="$ctrl.user.favDish">
+        </menu-item>
+      </div>
+    </div>
+  </div>
+</div>
